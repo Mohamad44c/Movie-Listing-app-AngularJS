@@ -1,0 +1,124 @@
+<html lang="en" ng-app="myModule">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Listing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style/homepage.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script> -->
+    <script src="scripts/script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+</head>
+
+<body ng-controller="movieController">
+    <div ng-include="headerComponent"></div>
+    <ng-view></ng-view>
+    <div id="section_topRated" class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="search-container">
+                    <h1 class="my-5 section-heading text-center">Top Rated Movies</h1>
+                    <form class="d-flex searchForm" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search Movies" aria-label="Search"
+                            ng-model="searchText.title">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="card col-md-3 mx-1 my-3 p-2" ng-repeat="movie in topRatedMovies | filter:searchText">
+                    <img class="card-img-top" ng-src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}"
+                        alt="{{movie.title}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <h4 class="rating">Rating: {{movie.vote_average*10}}% <i class="fa-thin fa-star"
+                                ng-show="{{movie.vote_average>8}}"></i></h4>
+
+                        <p class="card-text">{{ movie.overview | limitTo: 100 }}{{movie.overview.length > 100 ? '...' :
+                            ''}}</p>
+
+                        <a href="#/movie-details" class="btn btn-outline-dark" ng-click="getMovieDetails(movie.id)">Read
+                            more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner-container">
+        <img src="/assets/santa.jpeg" alt="santa banner" class="banner">
+        <div class="banner-txt-container">
+            <h1 class="banner-title">Check out the best</h1>
+            <h1 class="banner-title">from 2022</h1>
+        </div>
+    </div>
+    <div id="section_latest">
+
+        <div class="container">
+            <div class="row">
+                <h1 class="my-5 section-heading text-center">Latest Movies</h1>
+                <div class="card col-md-3 mx-1 my-3 p-2" ng-repeat="latestmovie in latestMovies | filter:searchText">
+                    <img class="card-img-top" ng-src="https://image.tmdb.org/t/p/original/{{latestmovie.backdrop_path}}"
+                        alt="{{latestmovie.title}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{latestmovie.title}}</h5>
+                        <h4 class="rating">Rating: {{latestmovie.vote_average}} <i class="fa-thin fa-star "
+                                ng-show="{{latestmovie.vote_average>8}}"></i></h4>
+                        <p class="card-text">{{ latestmovie.overview | limitTo: 100 }}{{latestmovie.overview.length >
+                            100 ? '...' : ''}}
+                        </p>
+                        <a href="/#movie-details" class="btn btn-outline-dark"
+                            ng-click="getMovieDetails(latestmovie.id)">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="section_upcoming">
+
+        <div class="container">
+            <div class="row">
+                <h1 class="my-5 section-heading text-center">Upcoming Movies</h1>
+                <div class="card col-md-3 mx-1 my-3 p-2"
+                    ng-repeat="upcomingmovie in upcomingMovies | filter:searchText">
+                    <img class="card-img-top"
+                        ng-src="https://image.tmdb.org/t/p/original/{{upcomingmovie.backdrop_path}}"
+                        alt="{{upcomingmovie.title}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{upcomingmovie.title}}</h5>
+                        <h6 class="date">Release date: {{upcomingmovie.release_date}}</h6>
+                        <h4 class="rating">Rating: {{upcomingmovie.vote_average}} <i class="fa-thin fa-star "
+                                ng-show="{{upcomingmovie.vote_average>8}}"></i></h4>
+                        <p class="card-text">{{ upcomingmovie.overview | limitTo: 100 }}{{upcomingmovie.overview.length
+                            >
+                            100 ? '...' : ''}}
+                        </p>
+                        <a href="/#movie-details" class="btn btn-outline-dark"
+                            ng-click="getMovieDetails(upcomingmovie.id)">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="backtotop">
+        <i class="fa-thin fa-caret-up"></i>
+    </div> -->
+    <div ng-include="footerComponent"></div>
+    <!-- fontawesome -->
+
+    <script src="https://kit.fontawesome.com/ebfc7e5c75.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

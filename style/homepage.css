@@ -1,0 +1,104 @@
+* {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.row {
+  justify-content: space-evenly;
+}
+
+.bg-body-tertiary {
+  padding: 20px 0 !important;
+}
+
+/* .fa-brands, .fab  {
+    font-family: "Font Awesome 6 Brands" !important;
+}  */
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 280px;
+}
+/* icon */
+.fa-thin {
+  font-family: "Font Awesome 6 Free" !important;
+  font-style: normal;
+  color: #fac213;
+}
+/* navbar */
+.navbar-brand {
+  font-weight: 700;
+}
+
+.searchForm {
+  float: right;
+}
+
+/* section title */
+.section-heading {
+  font-weight: 700 !important;
+  font-size: 50px;
+}
+
+.nav-link {
+  font-weight: 200 !important;
+}
+
+.rating {
+  font-weight: 200;
+  font-size: 16px;
+}
+
+.card-text {
+  font-weight: 200;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 30px;
+}
+
+.footerName {
+  font-size: 20px;
+}
+
+.githubLink {
+  color: white;
+}
+
+.footer h1 {
+  margin: 0;
+  font-weight: 200;
+}
+
+.backtotop {
+  position: fixed;
+  right: 5%;
+  bottom: 20%;
+}
+
+.banner-container {
+  position: relative;
+  text-align: center;
+}
+
+.banner-txt-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner-title {
+  color: white;
+  font-weight: 600;
+  font-size: 60px;
+}
