@@ -21,6 +21,11 @@
   height: 280px;
 }
 /* icon */
+.fa-brands,
+.fab {
+  font-family: "Font Awesome 6 Brands" !important;
+}
+
 .fa-thin {
   font-family: "Font Awesome 6 Free" !important;
   font-style: normal;
