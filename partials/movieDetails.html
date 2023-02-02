@@ -1,19 +1,19 @@
-<div style="margin-top: 500px;" class="mx-5" ng-controller="movieController">
-    <div class="container">
+<div ng-controller="movieController" class="movieDetail-section">
+    <div class="container" ng-model="movieInfo">
         <div class="row">
             <div class="col-md-6">
-                <img ng-src="https://image.tmdb.org/t/p/original/{{movieDetails.backdrop_path}}"
-                    alt="{{movieDetails.title}}">
+                <img ng-src="https://image.tmdb.org/t/p/original/{{movieInfo.backdrop_path}}"
+                    alt="{{movieInfo.title}}">
             </div>
             <div class="col-md-6">
-                <h1>{{movieDetails.title}}</h1>
-                <h1 style="font-style: italic; font-weight: 300;">{{movieDetails.tagline}}</h1>
+                <h1>{{movieInfo.title}}</h1>
+                <h1 style="font-style: italic; font-weight: 300;">{{movieInfo.tagline}}</h1>
 
-                <h4 class="rating">Rating: {{movieDetails.vote_average*10}}% <i class="fa-thin fa-star"
-                        ng-show="{{movieDetails.vote_average>8}}"></i>
+                <h4 class="rating">Rating: {{movieInfo.vote_average*10}}% <i class="fa-thin fa-star"
+                        ng-show="{{movieInfo.vote_average>8}}"></i>
                 </h4>
 
-                <p>{{movieDetails.overview}}</p>
+                <p>{{movieInfo.overview}}</p>
                 <a href="">IMDB</a>
             </div>
         </div>
