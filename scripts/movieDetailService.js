@@ -9,9 +9,7 @@ movieApp.factory("detailService", function ($http, $log) {
           movie_id +
           "?api_key=4f35139a7aeecfe122ffd50f642cd92b",
       })
-        .then(function (movieDetailResponse) {
-          //   console.log("clicked movie id:" + movie_id);
-          //   console.log(movieDetails);
+        .then(function (movieDetailResponse) { 
           $log.info(movieDetailResponse.data);
           return movieDetailResponse.data;
         })

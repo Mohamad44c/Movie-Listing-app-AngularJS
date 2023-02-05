@@ -1,21 +1,54 @@
 <div ng-controller="movieController" class="movieDetail-section">
-    <div class="container" ng-model="movieInfo">
+    <div class="container" ng-model="movieDetail">
         <div class="row">
             <div class="col-md-6">
-                <img ng-src="https://image.tmdb.org/t/p/original/{{movieInfo.backdrop_path}}"
-                    alt="{{movieInfo.title}}">
+                <img style="width: 100%; height:100%; object-fit: cover;"
+                    ng-src="https://image.tmdb.org/t/p/original/{{movieDetail.backdrop_path}}"
+                    alt="{{movieDetail.title}}">
             </div>
             <div class="col-md-6">
-                <h1>{{movieInfo.title}}</h1>
-                <h1 style="font-style: italic; font-weight: 300;">{{movieInfo.tagline}}</h1>
+                <h1>{{movieDetail.title}}</h1>
+                <h1 style="font-style: italic; font-weight: 300; font-size: 1.5em;">{{movieDetail.tagline}}</h1>
 
-                <h4 class="rating">Rating: {{movieInfo.vote_average*10}}% <i class="fa-thin fa-star"
-                        ng-show="{{movieInfo.vote_average>8}}"></i>
+                <h4 class="rating">Rating: {{movieDetail.vote_average*10 | number:0}}%
+                    <i class="fa-thin fa-star" ng-show="{{movieDetail.vote_average>8}}"></i>
                 </h4>
-
-                <p>{{movieInfo.overview}}</p>
-                <a href="">IMDB</a>
+                <h4>Overview</h4>
+                <p>{{movieDetail.overview}}</p>
+                <h4>Tags</h4>
+                <div class="tagContainer">
+                    <div ng-repeat="tag in movieTags">
+                        <h5 class="tag">{{tag.name}}</h5>
+                    </div>
+                </div>
+                <!-- <a href="">IMDB</a> -->
             </div>
         </div>
     </div>
 </div>
+<!-- get similar -->
+<div id="section_topRated" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="search-container">
+                <h1 class="my-5 section-heading text-center">Similar Movies</h1>
+            </div>
+            <div class="card col-md-3 mx-1 my-3 p-2" ng-repeat="similar in similarMovies | filter:searchText">
+                <img class="card-img-top" ng-src="https://image.tmdb.org/t/p/original/{{similar.backdrop_path}}"
+                    alt="{{similar.title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{similar.title}}</h5>
+                    <h4 class="rating">Rating: {{similar.vote_average*10 | number:0}}%
+                        <i class="fa-thin fa-star" ng-show="{{similar.vote_average>8}}"></i>
+                    </h4>
+                    <p class="card-text">{{ similar.overview | limitTo: 100 }}{{similar.overview.length > 100 ?
+                        '...' :
+                        ''}}</p>
+                    <a href="movie-details/{{similar.id}}" class="btn btn-outline-dark">Read
+                        more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end similar -->

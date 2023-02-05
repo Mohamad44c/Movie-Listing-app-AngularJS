@@ -1,7 +1,7 @@
 <html lang="en" ng-app="movieModule">
 
 <head>
-    <base href="/">
+    <base href="/" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style/homepage.css">
+    <link type="image/png" sizes="32x32" rel="icon" href="assets/icons8-movie-projector-32.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
@@ -17,7 +18,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
-    <!-- <script src="scripts/angular-route.min.js"></script> -->
     <script src="scripts/script.js"></script>
     <script src="scripts/movieDetailService.js"></script>
 
@@ -28,7 +28,6 @@
     <div ng-include="headerComponent"></div>
     <ng-view class="view"></ng-view>
     <div ng-include="footerComponent"></div>
-
 
     <script src="https://kit.fontawesome.com/ebfc7e5c75.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
